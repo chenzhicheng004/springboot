@@ -29,4 +29,9 @@ public class TestServiceImpl3 implements TestService {
     public List<Test> getAll() {
         return null;
     }
+
+    @Override
+    public long insertTest(Test test) {
+        return 0;
+    }
 }

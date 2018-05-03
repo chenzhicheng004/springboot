@@ -12,11 +12,13 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.*;
 import java.util.HashMap;
 import java.util.List;
@@ -103,6 +105,13 @@ public class TestController {
         return testService.getAll();
     }
 
+    @RequestMapping("/testMybatis3")
+    @ResponseBody
+    public Long testMybatis3(Test test) {
+        testService.insertTest(test);
+        return test.getId();
+    }
+
     @RequestMapping("/testAop")
     @ResponseBody
     public String testAop() {
@@ -120,5 +129,14 @@ public class TestController {
 
         mailSender.send(message);
         return "success";
+    }
+
+    @RequestMapping("/testValidate")
+    @ResponseBody
+    public Object testValidate(@Valid Person person,BindingResult result) {
+        if(result.hasErrors()){
+            return result.getAllErrors();
+        }
+        return person;
     }
 }

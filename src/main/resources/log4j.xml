@@ -34,7 +34,7 @@
     </appender>
 
     <root>
-        <priority value="${log.level}" />
+        <priority value="info" />
         <appender-ref ref="INFO_LOGGER"/>
         <appender-ref ref="ERROR_LOGGER"/>
         <appender-ref ref="console"/>

@@ -17,4 +17,6 @@ public interface TestService {
     Test getById(Long id);
 
     List<Test> getAll();
+
+    long insertTest(Test test);
 }

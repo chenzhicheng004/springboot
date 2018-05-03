@@ -44,4 +44,10 @@ public class TestServiceImpl implements TestService {
         PageHelper.startPage(1, 2);
         return testMapper.getAll();
     }
+
+    @Override
+    public long insertTest(Test test) {
+        return testMapper.insert(test);
+    }
+
 }

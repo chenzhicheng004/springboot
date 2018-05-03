@@ -19,4 +19,7 @@ public interface TestMapper {
     @Results({@Result(property = "finalName", column = "final_name")})
     List<Test> getAll();
 
+    @Insert("insert into test(name,age,final_name) values(#{name},#{age},#{finalName})")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
+    void insert(Test test);
 }
